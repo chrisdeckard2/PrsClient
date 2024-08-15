@@ -1,4 +1,22 @@
 function VendorList() {
+
+  function VendorList() {
+    const [vendors, setVendors] = useState<Vendor[]>([]);
+    const [busy, setBusy] = useState(false);
+
+    async function getVendors() {
+      setBusy(true);
+      let data = await vendorAPI.list();
+      setVendors(data);
+      setBusy(false);
+    }
+
+    useEffect(() => {
+      getVendors();
+    }, []);
+  }
+
+
   return (
     <div className="container-fluid list bg-body-tertiary p-3">
       {/* <div className="row"> */}
