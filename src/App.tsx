@@ -2,23 +2,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Header from "./Header";
 import NavPanel from "./Navpanel";
+import IndexPage from "./IndexPage";
+import VendorsPage from "./vendors/VendorsPage";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div>
+    <BrowserRouter>
+      <>
         <Header />
-
         <main>
           <NavPanel />
-          <section className="container fluid mx-5 my-2 py-4">
-            <h2>Purchase Request System</h2>
-            <hr />
-            <p>This application will allow you to make purchase Requests</p>
-          </section>
+          <Routes>
+            <Route path="/" element={<IndexPage />} />
+            <Route path="vendors" element={<VendorsPage />} />
+          </Routes>
         </main>
-      </div>
-    </>
+      </>
+    </BrowserRouter>
   );
 }
 

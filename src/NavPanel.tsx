@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function NavPanel() {
   return (
     <nav>
-      <ul className="nav flex-column p-4">
+      <ul className="nav nav-pills flex-column p-4">
         <div className="dropdown" />
         <a
           className="btn createnewbtn"
@@ -40,26 +40,25 @@ function NavPanel() {
           </li>
         </ul>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">
+          <a className="nav-link" aria-current="page" href="#">
             Purchases
           </a>
-          <a className="nav-link active" aria-current="page" href="#">
+          <a className="nav-link " aria-current="page" href="#">
             Requests
           </a>
-          <a className="nav-link active" aria-current="page" href="#">
+          <a className="nav-link " aria-current="page" href="#">
             Products
           </a>
-          <a className="nav-link active" aria-current="page" href="#">
+          <NavLink className="nav-link " to ="/vendors" >
             Vendors
-          </a>
-          <a className="nav-link active" aria-current="page" href="#">
+          </NavLink>
+          {/* <a className="nav-link " aria-current="page" href="#">
             Lists
-          </a>
+          </a> */}
         </li>
       </ul>
     </nav>
   );
 }
-
 
 export default NavPanel;
