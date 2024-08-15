@@ -1,11 +1,14 @@
-
-
 function VendorsPage() {
   return (
-
-    
-    <div>VendorsPage</div>
-  )
+    <section className="mt-4 container-fluid mx-5">
+      <div className="border-bottom d-flex justify-content-between p-3 mb-4">
+        <h3>Vendors</h3>
+        <a className="btn btn-primary" href="vendor-create.html">
+          Create Vendor
+        </a>
+      </div>
+    </section>
+  );
 }
 
-export default VendorsPage
+export default VendorsPage;
