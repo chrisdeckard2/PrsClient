@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 <div>
-  function VendorsCreatePage() {"{"}
+  function VendorsCreate() {"{"}
   return( &lt;&gt;
   <div>
     <header className="container-fluid justify-content-between d-flex">
