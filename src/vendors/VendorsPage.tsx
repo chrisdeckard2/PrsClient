@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import VendorList from "./VendorList";
 
 function VendorsPage() {
@@ -5,9 +6,9 @@ function VendorsPage() {
     <section className="mt-4 container-fluid mx-5">
       <div className="border-bottom d-flex justify-content-between p-3 mb-4">
         <h3>Vendors</h3>
-        <a className="btn btn-primary" href="vendor-create.html">
+        <NavLink className="btn btn-primary" to="/vendor/create">
           Create Vendor
-        </a>
+        </NavLink>
       </div>
       {/* Everything in the body goes here */}
       <VendorList />

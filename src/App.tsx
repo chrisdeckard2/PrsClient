@@ -5,6 +5,8 @@ import NavPanel from "./Navpanel";
 import IndexPage from "./IndexPage";
 import VendorsPage from "./vendors/VendorsPage";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+import VendorCreate from "./vendors/VendorCreate";
+import VendorEdit from "./vendors/VendorEdit";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<IndexPage />} />
             <Route path="vendors" element={<VendorsPage />} />
+            <Route path="/vendor/create" element={<VendorCreate />} />
+            <Route path={`vendor/edit/:id`} element={<VendorEdit/>}/>
           </Routes>
         </main>
       </>

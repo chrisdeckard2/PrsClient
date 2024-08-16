@@ -3,6 +3,11 @@
 import { Vendor } from "./Vendor";
   
   let url = `${BASE_URL}/vendors`;
+
+  interface VendorCardProps {
+    vendor: Vendor;
+    onRemove: (vendor: Vendor) => void;
+  }
   
   export const vendorAPI = {
     list(): Promise<Vendor[]> {
