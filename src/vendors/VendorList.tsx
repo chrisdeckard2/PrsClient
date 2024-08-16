@@ -16,6 +16,8 @@ function VendorList() {
     }, []);
   }
 
+  async function remove(vendor: Vendor) {}
+  
 
   return (
     <div className="container-fluid list bg-body-tertiary p-3">
