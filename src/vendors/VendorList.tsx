@@ -45,7 +45,7 @@ function VendorList() {
               <div className="d-flex justify-content-between">
                 <div>
                   <h5 className="card-title">{vendor.name}</h5>
-                  <span className="badge text-bg-secondary">{vendor.code}</span>
+                  <span className="badge text-bg-primary">{vendor.code}</span>
                 </div>
                 <div className="btn-group dropend">
                   <Dropdown aria-expanded="false">
