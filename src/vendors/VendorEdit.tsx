@@ -4,7 +4,7 @@ function VendorEdit() {
 
   return (
     <>
-      <h2 className="ms-5 mt-3">Edit Vendor</h2>
+      <h2 className="ms-1 mt-3"></h2>
       <hr />
       <VendorForm  />
     </>

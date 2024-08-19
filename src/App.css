@@ -10,8 +10,6 @@ header {
 
 main {
   display: flex;
-  
-  
 }
 
 nav {
@@ -19,7 +17,6 @@ nav {
   background-color: #efefef;
   padding-right: 4rem;
   height: 550vh;
-  
 }
 
 .container {
@@ -31,7 +28,6 @@ nav {
 #menu {
   gap: 1rem;
   padding-top: 1%;
-  
 }
 
 .nav-link {
@@ -46,18 +42,14 @@ nav {
   align-items: center;
   text-decoration: none;
   color: inherit;
-  
-  
-  
 }
 
 .nav-icon {
   margin-right: 10px;
-  
 }
 
 .btn .bi {
-  margin-right: 5px; 
+  margin-right: 5px;
 }
 
 .btn {
@@ -85,8 +77,34 @@ nav {
 }
 
 .logo-text {
-  margin-left: 12px; 
-  font-size: 1rem; 
+  margin-left: 12px;
+  font-size: 1rem;
+}
+
+.custom-dropdown .dropdown-item {
+  background-color: transparent !important;
+  color: inherit;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: #007bff !important;
+  color: #ffffff;
+}
+
+.no-caret::after {
+  display: none !important; /* Hides the caret */
+}
+
+.align-left {
+  margin-left: 2rem;
   
 }
-  
+
+.loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
+  color: #007bff; 
+} 
