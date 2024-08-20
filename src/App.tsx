@@ -13,6 +13,9 @@ import { Spinner } from "react-bootstrap";
 import UserCreate from "./users/UserCreate";
 import UserEdit from "./users/UserEdit";
 import UsersPage from "./users/UsersPage";
+import ProductCreate from "./products/ProductCreate";
+import ProductEdit from "./products/ProductEdit";
+import ProductsPage from "./products/ProductsPage";
 
 
 function App() {
@@ -48,6 +51,9 @@ function App() {
             <Route path="vendors" element={<VendorsPage />} />
             <Route path="/vendor/create" element={<VendorCreate />} />
             <Route path={`vendor/edit/:id`} element={<VendorEdit />} />
+            <Route path="products" element={<ProductsPage />} />
+            <Route path="/product/create" element={<ProductCreate />} />
+            <Route path={`product/edit/:id`} element={<ProductEdit />} />
           </Routes>
         </main>
       </>
