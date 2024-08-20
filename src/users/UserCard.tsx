@@ -12,8 +12,8 @@ interface UserCardProps {
 function UserCard({ user, onRemove }: UserCardProps) {
   return (
     <div
-      className="d-flex align-items-center justify-content-between p-3 rounded bg-light shadow-sm mb-3"
-      style={{ width: "25%", maxWidth: "600px" }}
+      className="d-flex align-items-center justify-content-between p-3 rounded bg-light shadow-sm mb-3 mt-2"
+      style={{ width: "25%", maxWidth: "600px", paddingTop: "40px" }}
     >
       <div className="d-flex align-items-center">
         <div

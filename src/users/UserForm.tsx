@@ -39,7 +39,10 @@ function UserForm() {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid custom-margin-top">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h2>Edit User</h2>
+      </div>
       <div>
         <form className="row g-md-4 needs-validation is-invalid" onSubmit={handleSubmit(save)} noValidate>
           <div className="col-md-5">
@@ -57,7 +60,7 @@ function UserForm() {
             />
             <div className="invalid-feedback ">{errors?.username?.message}</div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label htmlFor="password" className="form-label">
               Password
             </label>
@@ -76,7 +79,6 @@ function UserForm() {
             </label>
             <input
               type="text"
-              //   className="form-control is-invalid"
               id="inputAddress"
               {...register("firstname", {
                 required: "First Name is required",
@@ -92,7 +94,6 @@ function UserForm() {
             </label>
             <input
               type="text"
-              //   className="form-control is-invalid"
               id="lastname"
               {...register("lastname", { required: "Last Name is required" })}
               placeholder="Enter Lastname"
@@ -138,7 +139,7 @@ function UserForm() {
               Cancel
             </button>
             <button className="btn btn-primary form-check">
-              <svg className="me-2" width={15} height={23} fill="currentColor">
+              <svg className="me-1" width={5} height={23} fill="currentColor">
                 <use xlinkHref="../node_modules/bootstrap-icons/bootstrap-icons.svg#save" />
               </svg>
               Save User
@@ -151,3 +152,5 @@ function UserForm() {
 }
 
 export default UserForm;
+
+

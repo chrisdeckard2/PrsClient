@@ -108,3 +108,8 @@ nav {
   z-index: 1000; 
   color: #007bff; 
 } 
+
+.custom-margin-top {
+  margin-top: 50px;
+  /* Adjust as needed */
+}
