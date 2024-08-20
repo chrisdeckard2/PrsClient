@@ -3,8 +3,7 @@ import UserForm from "./UserForm";
 function UserCreate() {
   return (
     <>
-      <h2 className="ms-5 mt-3">New User</h2>
-      <hr />
+      <h2></h2>
       <UserForm />
     </>
   );

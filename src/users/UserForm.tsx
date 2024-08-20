@@ -1,3 +1,4 @@
+
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { User } from "./User";
 import { userAPI } from "./UserAPI";
@@ -41,11 +42,11 @@ function UserForm() {
   return (
     <div className="container-fluid custom-margin-top">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Edit User</h2>
+        <h2>Create User</h2>
       </div>
       <div>
         <form className="row g-md-4 needs-validation is-invalid" onSubmit={handleSubmit(save)} noValidate>
-          <div className="col-md-5">
+          <div className="col-md-4">
             <label htmlFor="vc" className="form-label">
               Username
             </label>
@@ -58,7 +59,7 @@ function UserForm() {
               className={`form-control ${errors.username && "is-invalid"} `}
               placeholder="Enter Username"
             />
-            <div className="invalid-feedback ">{errors?.username?.message}</div>
+            <div className="invalid-feedback">{errors?.username?.message}</div>
           </div>
           <div className="col-md-4">
             <label htmlFor="password" className="form-label">
@@ -67,41 +68,46 @@ function UserForm() {
             <input
               type="text"
               id="password"
-              {...register("password", { required: "password is required" })}
+              {...register("password", {
+                required: "password is required",
+              })}
               placeholder="Enter Password"
               className={`form-control ${errors.password && "is-invalid"}`}
             />
             <div className="invalid-feedback">{errors?.password?.message}</div>
           </div>
-          <div className="col-9">
-            <label htmlFor="inputAddress" className="form-label">
-              First Name
-            </label>
-            <input
-              type="text"
-              id="inputAddress"
-              {...register("firstname", {
-                required: "First Name is required",
-              })}
-              placeholder="Enter Firstname"
-              className={`form-control ${errors.firstname && "is-invalid"}`}
-            />
-            <div className="invalid-feedback">{errors?.firstname?.message}</div>
+          <div className="row g-3">
+            <div className="col-md-4">
+              <label htmlFor="firstname" className="form-label">
+                First Name
+              </label>
+              <input
+                type="text"
+                id="firstname"
+                {...register("firstname", {
+                  required: "First Name is required",
+                })}
+                placeholder="Enter Firstname"
+                className={`form-control ${errors.firstname && "is-invalid"}`}
+              />
+              <div className="invalid-feedback">{errors?.firstname?.message}</div>
+            </div>
+            <div className="col-md-4">
+              <label htmlFor="lastname" className="form-label">
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="lastname"
+                {...register("lastname", {
+                  required: "Last Name is required",
+                })}
+                placeholder="Enter Lastname"
+                className={`form-control ${errors.lastname && "is-invalid"}`}
+              />
+              <div className="invalid-feedback">{errors?.lastname?.message}</div>
+            </div>
           </div>
-          <div className="col-5">
-            <label htmlFor="lastName" className="form-label">
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastname"
-              {...register("lastname", { required: "Last Name is required" })}
-              placeholder="Enter Lastname"
-              className={`form-control ${errors.lastname && "is-invalid"}`}
-            />
-            <div className="invalid-feedback">{errors?.lastname?.message}</div>
-          </div>
-
           <div className="col-md-4">
             <label htmlFor="phone">Phone</label>
             <input
@@ -134,10 +140,10 @@ function UserForm() {
               <label className="form-check-label">Admin</label>
             </div>
           </div>
-          <div className=" offset-7">
-            <button type="reset" className="btn btn-outline-primary me-2 form-check">
+          <div className="offset-7">
+            {/* <button type="reset" className="btn btn-outline-primary me-2 form-check">
               Cancel
-            </button>
+            </button> */}
             <button className="btn btn-primary form-check">
               <svg className="me-1" width={5} height={23} fill="currentColor">
                 <use xlinkHref="../node_modules/bootstrap-icons/bootstrap-icons.svg#save" />
@@ -152,5 +158,3 @@ function UserForm() {
 }
 
 export default UserForm;
-
-
