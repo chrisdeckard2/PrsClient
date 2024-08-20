@@ -1,6 +1,6 @@
 
   import { BASE_URL, delay, checkStatus, parseJSON } from "../utility/fetchUtilities";
-import { Request } from "./Request";
+import { Request } from "./Requests";
   
   let url = `${BASE_URL}/requests`;
 

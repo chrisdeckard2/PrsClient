@@ -1,14 +1,17 @@
-export class Vendor {
+import { User } from "../users/User";
+
+
+export class Request {
   id: number | undefined;
   description = "";
   justification = "";
   rejectionreason = "";
   deliverymode = "";
-  status = "";
-  total = "";
+  status = "NEW";
+  total: number | undefined;
   userid: string | undefined;
-  users: string | undefined;
-  
+  user: User | undefined;
+  statusColor: any;
 
   get isNew(): boolean {
     return this.id === undefined;
@@ -24,8 +27,6 @@ export class Vendor {
     if (initializer.status) this.status = initializer.status;
     if (initializer.total) this.total = initializer.total;
     if (initializer.userid) this.userid = initializer.userid;
-    if (initializer.users) this.users = initializer.users;
-    
+    if (initializer.user) this.user = initializer.user;
   }
 }
-
