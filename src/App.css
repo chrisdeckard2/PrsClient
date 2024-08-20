@@ -97,7 +97,6 @@ nav {
 
 .align-left {
   margin-left: 2rem;
-  
 }
 
 .loading-indicator {
@@ -105,11 +104,11 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000; 
-  color: #007bff; 
-} 
+  z-index: 1000;
+  color: #007bff;
+}
 
 .custom-margin-top {
-  margin-top: 50px;
+  margin-top: 10px;
   /* Adjust as needed */
 }

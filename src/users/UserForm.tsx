@@ -42,7 +42,8 @@ function UserForm() {
   return (
     <div className="container-fluid custom-margin-top">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Create User</h2>
+      
+      <hr />
       </div>
       <div>
         <form className="row g-md-4 needs-validation is-invalid" onSubmit={handleSubmit(save)} noValidate>

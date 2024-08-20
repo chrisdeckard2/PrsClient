@@ -47,8 +47,7 @@ function ProductForm() {
 
   return (
     <div className="container mt-1 align-left">
-      <h2 className="ms-1">New Product</h2>
-      <hr />
+      
       <form className="row g-4 needs-validation" onSubmit={handleSubmit(save)} noValidate>
         <div className="col-md-4">
           <label htmlFor="vc" className="form-label">
