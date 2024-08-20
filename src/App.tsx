@@ -16,13 +16,11 @@ import UsersPage from "./users/UsersPage";
 import ProductCreate from "./products/ProductCreate";
 import ProductEdit from "./products/ProductEdit";
 import ProductsPage from "./products/ProductsPage";
-
+import RequestCreate from "./requests/RequestCreate";
+import RequestEdit from "./requests/RequestEdit";
+import RequestsPage from "./requests/RequestPage";
 
 function App() {
-  
-
-
-
   return (
     <BrowserRouter>
       <>
@@ -41,7 +39,7 @@ function App() {
               },
             }}
           />
-        
+
           <NavPanel />
           <Routes>
             <Route path="/" element={<IndexPage />} />
@@ -54,6 +52,9 @@ function App() {
             <Route path="products" element={<ProductsPage />} />
             <Route path="/product/create" element={<ProductCreate />} />
             <Route path={`product/edit/:id`} element={<ProductEdit />} />
+            <Route path="requests" element={<RequestsPage />} />
+            <Route path="/request/create" element={<RequestCreate />} />
+            <Route path={`request/edit/:id`} element={<RequestEdit />} />
           </Routes>
         </main>
       </>

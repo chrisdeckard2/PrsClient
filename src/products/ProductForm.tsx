@@ -1,5 +1,3 @@
-
-
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Product } from "./Product";
 import { productAPI } from "./ProductAPI";
