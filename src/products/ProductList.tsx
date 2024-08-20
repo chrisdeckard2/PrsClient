@@ -45,7 +45,7 @@ function ProductList() {
               <div className="d-flex justify-content-between">
                 <div>
                   <h5 className="card-title">{product.name}</h5>
-                  <span className="badge text-bg-primary">{product.code}</span>
+                  <span className="badge text-bg-primary">{product.id}</span>
                 </div>
                 <div className="btn-group dropend">
                   <Dropdown aria-expanded="false">
@@ -78,7 +78,7 @@ function ProductList() {
                 </div>
               </div>
               <section>
-                <p className="card-text text-secondary mt-2 mb-0">{product.address}</p> {/* Added margin-top (mt-2) */}
+                <p className="card-text text-secondary mt-2 mb-0">{product.partnbr}</p> {/* Added margin-top (mt-2) */}
                 <p className="text-secondary m-0 p-0">{product.phone}</p>
                 <p className="text-secondary m-0 p-0">{product.email}</p>
               </section>

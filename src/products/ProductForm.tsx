@@ -3,11 +3,15 @@ import { Product } from "./Product";
 import { productAPI } from "./ProductAPI";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Vendor } from "../vendors/Vendor";
+import { useState } from "react";
+import { vendorAPI } from "../vendors/VendorAPI";
 
 function ProductForm() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const productId = Number(id);
+  const [vendors, setVendors] = useState<Vendor[]>([]);
 
   const {
     register,
@@ -15,6 +19,9 @@ function ProductForm() {
     formState: { errors },
   } = useForm<Product>({
     defaultValues: async () => {
+      let vendorData = await vendorAPI.list();
+      setVendors(vendorData);
+
       if (!productId) {
         return Promise.resolve(new Product());
       } else {
@@ -73,57 +80,63 @@ function ProductForm() {
           <div className="invalid-feedback">{errors?.name?.message}</div>
         </div>
 
-        <div className="col-12">
-          <label htmlFor="inputAddress" className="form-label">
-            Price
-          </label>
-          <input
-            type="text"
-            id="inputAddress"
-            {...register("price", {
-              required: "Address is required",
-            })}
-            placeholder="Enter product's price"
-            className={`form-control ${errors.price && "is-invalid"}`}
-          />
-          <div className="invalid-feedback">{errors?.price?.message}</div>
-        </div>
+        <div className="row g-3">
+          <div className="col-md-4">
+            <label htmlFor="inputAddress" className="form-label">
+              Price
+            </label>
+            <input
+              type="text"
+              id="inputAddress"
+              {...register("price", {
+                required: "Price is required",
+              })}
+              placeholder="Enter product's price"
+              className={`form-control ${errors.price && "is-invalid"}`}
+            />
+            <div className="invalid-feedback">{errors?.price?.message}</div>
+          </div>
 
-        <div className="col-md-4">
-          <label htmlFor="city" className="form-label">
-            Units
-          </label>
-          <input
-            type="text"
-            id="city"
-            {...register("unit", { required: "Unit # is required" })}
-            placeholder="Enter # of units"
-            className={`form-control ${errors.unit && "is-invalid"}`}
-          />
-          <div className="invalid-feedback">{errors?.unit?.message}</div>
-        </div>
+          <div className="col-md-4">
+            <label htmlFor="city" className="form-label">
+              Units
+            </label>
+            <input
+              type="text"
+              id="city"
+              {...register("unit", { required: "Unit # is required" })}
+              placeholder="Enter # of units"
+              className={`form-control ${errors.unit && "is-invalid"}`}
+            />
+            <div className="invalid-feedback">{errors?.unit?.message}</div>
+          </div>
 
-        <div className="col-md-2">
-          <label htmlFor="inputState" className="form-label">
-            Vendor ID
-          </label>
-          <select
-            id="inputState"
-            {...register("vendorid", { required: "State Required" })}
-            className={`form-control ${errors.vendorid && "is-invalid"}`}
-          >
-            <option value="">Select state...</option>
-            <option value="OH">OH</option>
-            <option value="KY">KY</option>
-          </select>
-          <div className="invalid-feedback">{errors?.vendorid?.message}</div>
+          <div className="col-md-4">
+            <label htmlFor="inputState" className="form-label">
+              Vendor ID
+            </label>
+            <select
+              id="vendorid"
+              {...register("vendorid", { required: "Vendor Id Required" })}
+              className={`form-control ${errors.vendorid && "is-invalid"}`}
+            >
+              <option value="">Select...</option>
+              {/* enter vendor ids here */}
+              {vendors.map((vendor) => (
+                <option key={vendor.id} value={vendor.id}>
+                  {vendor.name}
+                </option>
+              ))}
+            </select>
+            <div className="invalid-feedback">{errors?.vendorid?.message}</div>
+          </div>
         </div>
 
         <div className="col-12 d-flex justify-content-end">
-          <NavLink to="/products" className="btn btn-outline-primary me-2">
+          <NavLink to="/products" className="btn btn-outline-primary me-2 mt-4">
             Cancel
           </NavLink>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary mt-4">
             <svg className="me-1" width={0} height={23} fill="currentColor">
               <use xlinkHref="../node_modules/bootstrap-icons/bootstrap-icons.svg#save" />
             </svg>
