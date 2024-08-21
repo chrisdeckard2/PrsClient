@@ -1,6 +1,5 @@
 import { User } from "../users/User";
 
-
 export class Request {
   id: number | undefined;
   description = "";
@@ -9,7 +8,7 @@ export class Request {
   deliverymode = "";
   status = "NEW";
   total: number | undefined;
-  userid: string | undefined;
+  userId: number | undefined;
   user: User | undefined;
   statusColor: any;
 
@@ -26,7 +25,7 @@ export class Request {
     if (initializer.deliverymode) this.deliverymode = initializer.deliverymode;
     if (initializer.status) this.status = initializer.status;
     if (initializer.total) this.total = initializer.total;
-    if (initializer.userid) this.userid = initializer.userid;
+    if (initializer.userId) this.userId = initializer.userId;
     if (initializer.user) this.user = initializer.user;
   }
 }

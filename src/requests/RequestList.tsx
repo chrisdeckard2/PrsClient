@@ -22,10 +22,12 @@ function RequestList() {
 
   async function remove(request: Request) {
     if (window.confirm("Are you sure you want to delete this request?")) {
+      if (request.id){
       await requestAPI.delete(request.id);
       let updatedRequests = requests.filter((v) => v.id !== request.id);
       setRequests(updatedRequests);
       toast.success("Successfully deleted.");
+    }
     }
   }
 
@@ -64,8 +66,8 @@ function RequestList() {
                   </td>
                   <td>${request.total}</td>
                   <td>
-                    <div>{request.requestedBy}</div>
-                    <small className="text-muted">{request.deliveryType}</small>
+                    <div>{request.user?.firstname}</div>
+                    
                   </td>
                   <td className="text-end">
                     <Dropdown>
