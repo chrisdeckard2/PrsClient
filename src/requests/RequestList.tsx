@@ -89,6 +89,9 @@ function RequestList() {
                         >
                           Delete
                         </Dropdown.Item>
+                        <Dropdown.Item as={NavLink} to={`/request/review/${request.id}`}>
+                          Review
+                        </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </td>

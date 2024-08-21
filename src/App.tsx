@@ -19,6 +19,7 @@ import ProductsPage from "./products/ProductsPage";
 import RequestCreate from "./requests/RequestCreate";
 import RequestEdit from "./requests/RequestEdit";
 import RequestsPage from "./requests/RequestPage";
+import RequestDetails from "./requests/RequestDetails";
 
 function App() {
   return (
@@ -55,6 +56,8 @@ function App() {
             <Route path="requests" element={<RequestsPage />} />
             <Route path="/request/create" element={<RequestCreate />} />
             <Route path={`request/edit/:id`} element={<RequestEdit />} />
+            <Route path="/request/review/:id" element={<RequestDetails />} />
+          
           </Routes>
         </main>
       </>
