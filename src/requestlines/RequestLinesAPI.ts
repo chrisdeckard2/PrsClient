@@ -14,10 +14,7 @@ export const requestlineAPI = {
     return fetch(url).then(delay(400)).then(checkStatus).then(parseJSON);
   },
 
-  listByMovie(movieId: number): Promise<Requestline[]> {
-    let currentUrl = `${BASE_URL}/movies/${movieId}/requestlines?_expand=actor`;
-    return fetch(currentUrl).then(checkStatus).then(parseJSON);
-  },
+  
 
   find(id: number): Promise<Requestline> {
     return fetch(`${url}/${id}`).then(checkStatus).then(parseJSON);

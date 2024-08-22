@@ -91,7 +91,7 @@
 // export default RequestDetails;
 
 import { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, Link } from "react-router-dom";
 import { requestAPI } from "./RequestsAPI";
 import { Request } from "./Requests";
 import { useForm } from "react-hook-form";
@@ -101,8 +101,8 @@ import { Requestline } from "../requestlines/RequestLines";
 import { requestlineAPI } from "../requestlines/RequestLinesAPI";
 
 function RequestDetails() {
-  const { id } = useParams<{ id: string }>();
-  const requestId = Number(id);
+  const { Id } = useParams<{ Id: string }>();
+  const requestId = Number(Id);
   const [request, setRequest] = useState<Request | undefined>(undefined);
 
   useEffect(() => {
@@ -142,14 +142,13 @@ function RequestDetails() {
   });
 
   async function removeRequestLine(requestLine: Requestline) {
-    if(confirm("Do you really want to delete")) {
-      if(requestLine.id){
-        await requestlineAPI.delete(requestLine.id)
+    if (confirm("Do you really want to delete")) {
+      if (requestLine.id) {
+        await requestlineAPI.delete(requestLine.id);
         toast.success("Successfully deleted.");
-        let updatedRequestlines = request?.requestLines?.filter((r) => r.id !== requestLine.id)
+        let updatedRequestlines = request?.requestLines?.filter((r) => r.id !== requestLine.id);
         if (request) {
-          setRequest({...request, requestLines: updatedRequestlines} as Request)
-          
+          setRequest({ ...request, requestLines: updatedRequestlines } as Request);
         }
       }
     }
@@ -165,7 +164,7 @@ function RequestDetails() {
             <h2>Request</h2>
             <div>
               <button className="btn btn-primary me-2">Send For Review</button>
-              <NavLink to={`/users/edit/${request?.users?.id}`} className="btn btn-primary">
+              <NavLink to={`/request/edit/${request?.users?.id}`} className="btn btn-primary">
                 Edit
               </NavLink>
             </div>
@@ -198,11 +197,20 @@ function RequestDetails() {
             </dl>
           </div>
         </div>
-        <div></div>
-        <RequestLinesTable request={request} onRemove={removeRequestLine} />
 
+        {/* Making the items box longer and aligning fields to the left */}
+        {/* <div className="card mt-5" style={{ width: "100%" }}>
+          <div className="card-header">
+            <h5 className="card-title mb-">Items</h5>
+            <Link to={`/requestlines/create/${request?.id}`} className="btn btn-primary">
+              New Request Line
+            </Link>
+          </div>
+          <div className="card-body mb-5">
+          </div>
+          </div> */}
+          <RequestLinesTable request={request} onRemove={removeRequestLine} />
       </div>
-
     </>
   );
 }

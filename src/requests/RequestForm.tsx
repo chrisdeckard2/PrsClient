@@ -140,11 +140,14 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { userAPI } from "../users/UserAPI";
 import { User } from "../users/User";
+import { Requestline } from "../requestlines/RequestLines";
+import { requestlineAPI } from "../requestlines/RequestLinesAPI";
 
 function RequestForm() {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
-  const requestId = Number(id);
+  const { id: requestIdAsString, lineId: lineIdAsString } = useParams<{ id: string; lineId: string }>();
+  const requestId = Number(requestIdAsString);
+  const requestLineId = Number(lineIdAsString);
 
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -167,13 +170,14 @@ function RequestForm() {
     formState: { errors },
   } = useForm<Request>({
     defaultValues: async () => {
-      let usersData = await userAPI.list();
-      setUsers(usersData);
+      let productData = await userAPI.list();
+      setUsers(productData);
 
       if (!requestId) {
-        return Promise.resolve(new Request({ userId: 72 }));
+        let newRequestline = new Requestline({ requestId: requestId });
+        return Promise.resolve(newRequestline);
       } else {
-        return await requestAPI.find(requestId);
+        return await requestlineAPI.find(requestLineId);
       }
     },
   });

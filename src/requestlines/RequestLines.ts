@@ -6,7 +6,8 @@ export class Requestline {
   productId: number | undefined = undefined;
   requestId: number | undefined = undefined;
   quantity: number | undefined = undefined;
-  product: Product | undefined;
+  products: Product | undefined;
+  request: Request | undefined;
 
   get isNew(): boolean {
     return this.id === undefined;
@@ -18,6 +19,6 @@ export class Requestline {
     if (initializer.productId) this.productId = initializer.productId;
     if (initializer.requestId) this.requestId = initializer.requestId;
     if (initializer.quantity) this.quantity = initializer.quantity;
-    if (initializer.product) this.product = initializer.product;
+    if (initializer.products) this.products = initializer.products;
   }
 }
