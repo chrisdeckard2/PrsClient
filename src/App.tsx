@@ -61,9 +61,8 @@ function App() {
             <Route path={`request/edit/:id`} element={<RequestEdit />} />
             <Route path="/request/review/:Id" element={<RequestDetails />} />
             <Route path={`request/review/:Id/requestLines/create`} element={<RequestlineCreatePage />} />
-            <Route path={`request/detail/:Id/requestline/edit/:requestlineid`} element={<RequestlineEditPage />} />
-            <Route path= {`requestlines/create/:requestid`} element={<RequestlineCreatePage />} />
-          
+            <Route path={`request/detail/:Id/requestline/edit/:requestlineId`} element={<RequestlineEditPage />} />
+            <Route path={`requestlines/create/:requestid`} element={<RequestlineCreatePage />} />
           </Routes>
         </main>
       </>
