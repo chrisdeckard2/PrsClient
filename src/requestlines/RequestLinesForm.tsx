@@ -93,64 +93,6 @@ function RequestlineForm() {
       </div>
     </form>
   );
-
-
-//     <div className="card mt-3 mx-5">
-//       <div className="card-body">
-//         <h5 className="card-title">Item</h5>
-//         <form>
-//           <div className="mb-3">
-//             <label htmlFor="product" className="form-label">Product</label>
-//             <select 
-//               id="product" 
-//               className="form-select" 
-//               value={requestline.product} 
-//               onChange={(e) => setProduct(e.target.value)}
-//             >
-//               <option value="Tasty Soft Chair">Tasty Soft Chair</option>
-//               <option value="Another Product">Another Product</option>
-//             </select>
-//           </div>
-//           <div className="mb-3">
-//             <label htmlFor="price" className="form-label">Price</label>
-//             <input 
-//               type="text" 
-//               className="form-control" 
-//               id="price" 
-//               value={`$${price.toFixed(2)}`} 
-//               readOnly 
-//             />
-//           </div>
-//           <div className="mb-3">
-//             <label htmlFor="quantity" className="form-label">Quantity</label>
-//             <input 
-//               type="number" 
-//               className="form-control" 
-//               id="quantity" 
-//               value={quantity} 
-//               onChange={handleQuantityChange} 
-//             />
-//           </div>
-//           <div className="mb-3">
-//             <label htmlFor="amount" className="form-label">Amount</label>
-//             <input 
-//               type="text" 
-//               className="form-control" 
-//               id="amount" 
-//               value={`$${(price * quantity).toFixed(2)}`} 
-//               readOnly 
-//             />
-//           </div>
-//           <button type="button" className="btn btn-secondary me-2">Cancel</button>
-//           <button type="submit" className="btn btn-primary">Save line</button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-//   );
-// }
-        }
-      
+}
 
 export default RequestlineForm;

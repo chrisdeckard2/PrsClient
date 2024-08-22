@@ -23,6 +23,7 @@ import RequestDetails from "./requests/RequestDetails";
 import RequestlineEditPage from "./requestlines/RequestLineEdit";
 import RequestlineCreatePage from "./requestlines/RequestLinesCreatePage";
 import NavPanel from "./NavPanel";
+import SignInPage from "./account/SignInPage";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
 
           <NavPanel />
           <Routes>
+            <Route path="/signin" element={<SignInPage />} />
             <Route path="/" element={<IndexPage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="/users/create" element={<UserCreate />} />
