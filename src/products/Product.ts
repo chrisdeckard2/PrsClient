@@ -2,7 +2,7 @@ export class Product {
   id: number | undefined;
   partnbr = "";
   name = "";
-  price = "";
+  price: number | undefined;
   unit = "";
   vendorid = "";
   // phone: string | undefined;

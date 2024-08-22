@@ -5,6 +5,11 @@ import { Link, NavLink } from "react-router-dom";
 import { Dropdown, Spinner } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 
+// interface RequestListProps {
+//   request: Request;
+//   onRemove: (request: Request) => void;
+// }
+
 function RequestList() {
   const [requests, setRequests] = useState<Request[]>([]);
   const [busy, setBusy] = useState(false);
@@ -22,12 +27,12 @@ function RequestList() {
 
   async function remove(request: Request) {
     if (window.confirm("Are you sure you want to delete this request?")) {
-      if (request.id){
-      await requestAPI.delete(request.id);
-      let updatedRequests = requests.filter((v) => v.id !== request.id);
-      setRequests(updatedRequests);
-      toast.success("Successfully deleted.");
-    }
+      if (request.id) {
+        await requestAPI.delete(request.id);
+        let updatedRequests = requests.filter((v) => v.id !== request.id);
+        setRequests(updatedRequests);
+        toast.success("Successfully deleted.");
+      }
     }
   }
 
@@ -55,9 +60,9 @@ function RequestList() {
               </tr>
             </thead>
             <tbody>
-              {requests.map((request, index) => (
+              {requests.map((request) => (
                 <tr key={request.id}>
-                  <td>{index + 1}</td>
+                  <td>{request.id}</td>
                   <td>
                     <div>{request.description}</div>
                   </td>
@@ -66,8 +71,7 @@ function RequestList() {
                   </td>
                   <td>${request.total}</td>
                   <td>
-                    <div>{request.user?.firstname}</div>
-                    
+                    <div>{request.users?.firstname}</div>
                   </td>
                   <td className="text-end">
                     <Dropdown>

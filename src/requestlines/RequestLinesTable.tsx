@@ -1,29 +1,36 @@
 import { Link } from "react-router-dom";
 import { Request } from "../requests/Requests";
-import { Requestlines } from "./Requestlines";
+import { Requestline } from "./RequestLines";
 
 interface RequestlineTableProps {
   request: Request;
-  onRemove: (requestLines: RequestLines) => void;
+  onRemove: (requestLines: Requestline) => void;
 }
 
-function RequestlineTable({ request, onRemove }: RequestlineTableProps) {
+
+function RequestLinesTable({ request, onRemove }: RequestlineTableProps) {
   return (
     <table className="table table-hover table-light w-50">
       <thead>
         <tr>
-          <th>Actor</th>
-          <th>Role</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Cost</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        {movie.requestlines?.map((requestline) => (
+        {request.requestLines?.map((requestline) => (
           <tr key={requestline.id}>
-            <td>{requestline.actor?.name}</td>
-            <td>{requestline.role}</td>
+            <td>{requestline.product?.name}</td>
+            <td>{requestline.product?.price}</td>
+            <td>{requestline.quantity}</td>
+            <td>{(requestline.product?.price ?? 0) * (requestline.quantity ?? 0)}</td>
             <td className="d-flex gap-2">
-              <Link to={`/movies/detail/${movie.id}/requestline/edit/${requestline.id}`}>edit</Link>
+
+
+              <Link to={`/requests/detail/${request.id}/requestline/edit/${requestline.id}`}>edit</Link>
               <a
                 href="#"
                 onClick={(event) => {
@@ -41,4 +48,4 @@ function RequestlineTable({ request, onRemove }: RequestlineTableProps) {
   );
 }
 
-export default RequestlinesTable;
+export default RequestLinesTable;

@@ -1,11 +1,12 @@
-import { Actor } from "../actors/Actor";
+import { Product } from "../products/Product";
+
 
 export class Requestline {
   id: number | undefined = undefined;
-  movieId: number | undefined = undefined;
+  productId: number | undefined = undefined;
   actorId: number | undefined = undefined;
-  role = "";
-  actor: Actor | undefined;
+  quantity: number | undefined = undefined;
+  product: Product | undefined;
 
   get isNew(): boolean {
     return this.id === undefined;
@@ -14,9 +15,9 @@ export class Requestline {
   constructor(initializer?: any) {
     if (!initializer) return;
     if (initializer.id) this.id = initializer.id;
-    if (initializer.movieId) this.movieId = initializer.movieId;
+    if (initializer.productId) this.productId = initializer.productId;
     if (initializer.actorId) this.actorId = initializer.actorId;
-    if (initializer.role) this.role = initializer.role;
-    if (initializer.actor) this.actor = initializer.actor;
+    if (initializer.quantity) this.quantity = initializer.quantity;
+    if (initializer.product) this.product = initializer.product;
   }
 }

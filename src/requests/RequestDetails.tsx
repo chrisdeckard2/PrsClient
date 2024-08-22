@@ -95,6 +95,10 @@ import { useParams, NavLink } from "react-router-dom";
 import { requestAPI } from "./RequestsAPI";
 import { Request } from "./Requests";
 import { useForm } from "react-hook-form";
+import RequestLinesTable from "../requestlines/RequestLinesTable";
+import toast from "react-hot-toast";
+import { Requestline } from "../requestlines/RequestLines";
+import { requestlineAPI } from "../requestlines/RequestLinesAPI";
 
 function RequestDetails() {
   const { id } = useParams<{ id: string }>();
@@ -137,6 +141,20 @@ function RequestDetails() {
     },
   });
 
+  async function removeRequestLine(requestLine: Requestline) {
+    if(confirm("Do you really want to delete")) {
+      if(requestLine.id){
+        await requestlineAPI.delete(requestLine.id)
+        toast.success("Successfully deleted.");
+        let updatedRequestlines = request?.requestLines?.filter((r) => r.id !== requestLine.id)
+        if (request) {
+          setRequest({...request, requestLines: updatedRequestlines} as Request)
+          
+        }
+      }
+    }
+  }
+
   if (!request) return null;
 
   return (
@@ -147,7 +165,7 @@ function RequestDetails() {
             <h2>Request</h2>
             <div>
               <button className="btn btn-primary me-2">Send For Review</button>
-              <NavLink to={`/users/edit/${request?.user?.id}`} className="btn btn-primary">
+              <NavLink to={`/users/edit/${request?.users?.id}`} className="btn btn-primary">
                 Edit
               </NavLink>
             </div>
@@ -175,13 +193,16 @@ function RequestDetails() {
             <dl>
               <dt>Requested By</dt>
               <dd>
-                {request?.user?.firstname} {request?.user?.lastname}
+                {request?.users?.firstname} {request?.users?.lastname}
               </dd>
             </dl>
           </div>
         </div>
         <div></div>
+        <RequestLinesTable request={request} onRemove={removeRequestLine} />
+
       </div>
+
     </>
   );
 }
