@@ -1,19 +1,21 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Requestline } from "./Requestline";
+
 import toast from "react-hot-toast";
-import { requestlineAPI } from "./RequestlineAPI";
+
 import { useState } from "react";
-import { Actor } from "../actors/Actor";
-import { actorAPI } from "../actors/ActorAPI";
+import { Product } from "../products/Product";
+import { productAPI } from "../products/ProductAPI";
+import { requestlineAPI } from "./RequestLinesAPI";
+import { Requestline } from "./RequestLines";
 
 function RequestlineForm() {
   const navigate = useNavigate();
   let { requestlineId: requestlineIdAsString } = useParams<{ requestlineId: string }>();
-  let { movieId: movieIdAsString } = useParams<{ movieId: string }>();
+  let { requestId: requestIdAsString } = useParams<{ requestId: string }>();
   let requestlineId = Number(requestlineIdAsString);
-  let movieId = Number(movieIdAsString);
-  const [actors, setActors] = useState<Actor[]>([]);
+  let requestId = Number(requestIdAsString);
+  const [products, setProducts] = useState<Product[]>([]);
 
   const {
     register,
@@ -21,11 +23,11 @@ function RequestlineForm() {
     formState: { errors },
   } = useForm<Requestline>({
     defaultValues: async () => {
-      let actorsData = await actorAPI.list();
-      setActors(actorsData);
+      let productsData = await productAPI.list();
+      setProducts(productsData);
 
       if (!requestlineId) {
-        let newRequestline = new Requestline({ movieId: movieId });
+        let newRequestline = new Requestline({ requestId: requestId });
         return Promise.resolve(newRequestline);
       } else {
         return await requestlineAPI.find(requestlineId);
@@ -40,7 +42,7 @@ function RequestlineForm() {
       } else {
         await requestlineAPI.put(requestline);
       }
-      navigate(`/movies/detail/${movieId}?lastUpdated=${Date.now()}`);
+      navigate(`/requests/detail/${requestId}?lastUpdated=${Date.now()}`);
     } catch (error: any) {
       toast.error(error.message);
     }
@@ -49,24 +51,24 @@ function RequestlineForm() {
   return (
     <form className="w-50" onSubmit={handleSubmit(save)} noValidate>
       <div className="mb-3">
-        <label className="form-label" htmlFor="actor">
-          Actor
+        <label className="form-label" htmlFor="product">
+          Product
         </label>
         <select
-          {...register("actorId", {
-            required: "Actor is required",
+          {...register("productId", {
+            required: "Product is required",
           })}
-          className={`form-select ${errors.actorId && "is-invalid"} `}
-          id="actor"
+          className={`form-select ${errors.productId && "is-invalid"} `}
+          id="product"
         >
           <option value="">Select...</option>
-          {actors.map((actor) => (
-            <option key={actor.id} value={actor.id}>
-              {actor.name}
+          {products.map((product) => (
+            <option key={product.id} value={product.id}>
+              {product.name}
             </option>
           ))}
         </select>
-        <div className="invalid-feedback">{errors?.actorId?.message}</div>
+        <div className="invalid-feedback">{errors?.quantity?.message}</div>
       </div>
 
       <div className="mb-3">
@@ -74,8 +76,8 @@ function RequestlineForm() {
           Role
         </label>
         <input
-          {...register("role", {
-            required: "Role is required",
+          {...register("quantity", {
+            required: "quantity is required",
           })}
           className="form-control"
           type="text"
@@ -85,10 +87,7 @@ function RequestlineForm() {
 
       <div className="d-flex gap-2">
         <button className="btn btn-outline-primary">Save</button>
-        <Link
-          className="btn btn-outline-secondary"
-          to={`/movies/detail/${movieId}`}
-        >
+        <Link className="btn btn-outline-secondary" to={`/requests/detail/${requestId}`}>
           Cancel
         </Link>
       </div>
