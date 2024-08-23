@@ -6,7 +6,7 @@ export class Request {
   description = "";
   justification = "";
   rejectionreason = "";
-  deliverymode = "";
+  deliveryMode = "";
   status = "NEW";
   total: number | undefined;
   userId: number | undefined;
@@ -24,7 +24,7 @@ export class Request {
     if (initializer.description) this.description = initializer.description;
     if (initializer.justification) this.justification = initializer.justification;
     if (initializer.rejectionreason) this.rejectionreason = initializer.rejectionreason;
-    if (initializer.deliverymode) this.deliverymode = initializer.deliverymode;
+    if (initializer.deliveryMode) this.deliveryMode = initializer.deliveryMode;
     if (initializer.status) this.status = initializer.status;
     if (initializer.total) this.total = initializer.total;
     if (initializer.userId) this.userId = initializer.userId;

@@ -183,7 +183,7 @@ function RequestDetails() {
           <div>
             <dl>
               <dt>Delivery Method</dt>
-              <dd>{request?.deliverymode}</dd>
+              <dd>{request?.deliveryMode}</dd>
               <dt>Status</dt>
               <dd className={getBadgeClass(request?.status)}>{request?.status}</dd>
             </dl>

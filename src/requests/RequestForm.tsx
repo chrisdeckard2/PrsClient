@@ -140,6 +140,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { userAPI } from "../users/UserAPI";
 import { User } from "../users/User";
+import { useUserContext } from "../users/UserContext";
 
 function RequestForm() {
   const navigate = useNavigate();
@@ -148,6 +149,8 @@ function RequestForm() {
 
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const { user } = useUserContext();
 
   // async function fetchUsers() {
   //   try {
@@ -171,7 +174,7 @@ function RequestForm() {
       setUsers(usersData);
 
       if (!requestId) {
-        return Promise.resolve(new Request({ userId: 72 }));
+        return Promise.resolve(new Request({ userId: user?.id }));
       } else {
         return await requestAPI.find(requestId);
       }
@@ -232,15 +235,15 @@ function RequestForm() {
           </label>
           <select
             id="deliveryMethod"
-            {...register("deliverymode", { required: "Delivery Method is required" })}
-            className={`form-select ${errors.deliverymode && "is-invalid"}`}
+            {...register("deliveryMode", { required: "Delivery Method is required" })}
+            className={`form-select ${errors.deliveryMode && "is-invalid"}`}
           >
             <option value="">Select...</option>
             <option value="Pickup">Pickup</option>
             <option value="Delivery">Delivery</option>
             <option value="Signature Delivery">Signature Delivery</option>
           </select>
-          <div className="invalid-feedback">{errors?.deliverymode?.message}</div>
+          <div className="invalid-feedback">{errors?.deliveryMode?.message}</div>
         </div>
 
         <div className="col-md-4">
