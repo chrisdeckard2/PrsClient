@@ -79,7 +79,7 @@ function ProductForm() {
             <input
               type="text"
               id="vc"
-              {...register("id", {
+              {...register("partnbr", {
                 required: "Product Code is Required",
               })}
               className={`form-control ${errors.id && "is-invalid"}`}

@@ -67,7 +67,7 @@ function UserForm() {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               id="password"
               {...register("password", {
                 required: "password is required",
