@@ -43,4 +43,17 @@ export const userAPI = {
   delete(id: number) {
     return fetch(`${url}/${id}`, { method: "DELETE" }).then(checkStatus);
   },
+
+  findByAccount(username: string, password: string): Promise<User> {
+    return (
+      fetch(`${url}?username=${username}&password=${password}`)
+        .then(checkStatus)
+        .then(parseJSON)
+        //delete the next three lineswhen using PRS API because it will only return one user not an array with one user
+    )
+}
+
+
 };
+
+

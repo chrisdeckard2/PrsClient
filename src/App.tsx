@@ -24,13 +24,28 @@ import RequestlineEditPage from "./requestlines/RequestLineEdit";
 import RequestlineCreatePage from "./requestlines/RequestLinesCreatePage";
 import NavPanel from "./NavPanel";
 import SignInPage from "./account/SignInPage";
+import { User } from "./users/User";
+import { UserContext } from "./users/UserContext";
+
+
+function getPersistedUser() {
+  const userAsJSON = localStorage.getItem("user");
+  if (!userAsJSON) return undefined;
+  const user = JSON.parse(userAsJSON);
+  return user;
+}
+
+
+
 
 function App() {
+const [user, setUser] = useState<User | undefined>(getPersistedUser());
+
+
   return (
     <BrowserRouter>
-      <>
+      <UserContext.Provider value={{ user, setUser }}>
         <Header />
-        <main>
           <Toaster
             toastOptions={{
               success: {
@@ -44,6 +59,7 @@ function App() {
               },
             }}
           />
+        <main>
 
           <NavPanel />
           <Routes>
@@ -67,7 +83,7 @@ function App() {
             <Route path={`requestlines/create/:requestid`} element={<RequestlineCreatePage />} />
           </Routes>
         </main>
-      </>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

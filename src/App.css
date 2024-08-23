@@ -16,7 +16,7 @@ nav {
   border-right: 0.02rem solid lightgrey;
   background-color: #efefef;
   padding-right: 4rem;
-  height: 550vh;
+  height: 100vh;
 }
 
 .container {
@@ -122,7 +122,7 @@ body {
 }
 
 .container-fluid {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .table {

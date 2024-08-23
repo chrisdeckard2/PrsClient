@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 import { User } from "./User";
 
-export interface UsercontextType {
+export interface UserContextType {
   user: User | undefined;
-  setUser: React.Dispatch<React.SetStateAction<User>> | undefined;
+  setUser: React.Dispatch<React.SetStateAction<User| undefined>>;
 }
 
 export const UserContext = createContext<UserContextType | undefined>(undefined);

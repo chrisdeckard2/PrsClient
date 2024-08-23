@@ -1,6 +1,16 @@
 import bootstrapIcons from "bootstrap-icons/bootstrap-icons.svg";
+import { useUserContext } from "./users/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
+
+  function signout() {
+    localStorage.removeItem("user");
+    setUser(undefined);
+    navigate("/signin");
+  }
 
     return (
 
@@ -14,23 +24,45 @@ function Header() {
   </div>
 
   
-  <a className="btn btn-primary d-flex align-items-center mt-2" href="signin.html">
-    Sign In
-  </a>
-
-
-
-
-  
-</header>
-
-
-
-
-
-    );
-
-
+  <details className="dropdown pe-5">
+        <summary className="btn btn-tertiary dropdown-toggle d-flex align-items-center">
+          <span
+            style={{ width: "3rem", height: "3rem" }}
+            className="d-flex  bg-primary-subtle fs-5 text-secondary align-items-center justify-content-center rounded-circle me-2"
+          >
+            {user?.firstname?.substring(0, 1)} {user?.lastname?.substring(0, 1)}
+          </span>
+          {user?.firstname} {user?.lastname}
+        </summary>
+        <div className="d-flex justify-content-end">
+          <ul
+            className="dropdown-menu bg-body-tertiary"
+            style={{ display: "revert" }}
+          >
+            <li>
+              <a className="dropdown-item" href="#">
+                Profile
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Settings
+              </a>
+            </li>
+            <li>
+              <button className="dropdown-item" onClick={signout}>
+                Sign out
+              </button>
+            </li>
+          </ul>
+        </div>
+      </details>
+    </header>
+  );
 }
+
+
+
+
 
 export default Header;
